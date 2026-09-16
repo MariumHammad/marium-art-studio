@@ -4,60 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Marium Hammad Art Studio</title>
+    <title>Featured Collection | Marium Hammad Art Studio</title>
 
-    ./style.css?v=3
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #1c1815;
+            --ivory: #efe8d8;
+            --ivory-dark: #e4dbc4;
+            --gold: #a9822f;
+            --line: rgba(28, 24, 21, 0.14);
+            --shadow: 0 14px 34px rgba(28, 24, 21, 0.16);
+        }
+
+        body {
+            margin: 0;
+            background: var(--ivory);
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .gallery-intro {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 90px 24px 48px;
+            text-align: center;
+        }
+
+        .kicker {
+            margin-bottom: 18px;
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+        }
+
+        .gallery-intro h1 {
+            margin: 0 0 20px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.05;
+        }
+
+        .gallery-intro p {
+            max-width: 620px;
+            margin: 0 auto;
+            color: rgba(28, 24, 21, 0.72);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 42px;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+        }
+
+        .piece {
+            min-width: 0;
+        }
+
+        .piece-frame {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: var(--ivory-dark);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .piece-frame img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .piece:hover .piece-frame img {
+            transform: scale(1.04);
+        }
+
+        .price-tag {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            padding: 8px 13px;
+            background: rgba(28, 24, 21, 0.88);
+            color: #ffffff;
+            font-size: 13px;
+        }
+
+        .piece-caption {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 14px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--line);
+        }
+
+        .piece-caption h2 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 23px;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+
+        .price {
+            flex-shrink: 0;
+            color: var(--gold);
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .medium {
+            margin: 7px 0 0;
+            color: rgba(28, 24, 21, 0.58);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 12px;
+            color: #596451;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .inquiry {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 18px;
+            background: var(--ink);
+            color: #ffffff;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+        }
+
+        .inquiry:hover {
+            background: var(--gold);
+            color: var(--ink);
+        }
+
+        .site-footer {
+            padding: 35px 20px;
+            background: var(--ink);
+            color: var(--ivory);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 620px) {
+            .gallery-intro {
+                padding: 60px 20px 38px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 38px;
+                padding: 0 16px 65px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <header class="site-header">
-        <h1>Marium Hammad Art Studio</h1>
-        <p>Contemporary Resin, Islamic-Inspired, Textured and Mixed Media Artwork</p>
+    <header class="gallery-intro">
+        <div class="kicker">HANDCRAFTED IN CALGARY</div>
+
+        <h1>Featured Collection</h1>
+
+        <p>
+            Original resin, textured and Islamic-inspired artwork by
+            Marium Hammad. Each piece is handmade and presented for
+            contemporary interior spaces.
+        </p>
     </header>
 
-    <main class="featured-collection">
+    <main class="gallery-grid">
 
-        <h2>Featured Collection</h2>
+        <article class="piece">
+            <div class="piece-frame">
+                artwork/the-bismillah-medallion.jpg
+                <span class="price-tag">CAD $350</span>
+            </div>
 
-        <div class="collection-grid">
+            <div class="piece-caption">
+                <h2>The Bismillah Medallion</h2>
+                <span class="price">CAD $350</span>
+            </div>
 
-            <article class="collection-item">
-                <img
-       e-bismillah-medallion.jpg
-                <div class="collection-info">
-                    <h3>The Bismillah Medallion</h3>
-                    <p class="price">CAD $350</p>
-                    <p class="status">Available</p>
-                </div>
-            </article>
+            <p class="medium">Islamic-inspired mixed-media artwork</p>
+            <span class="status">Available</span>
+            <br>
 
-            <article class="collection-item">
-                <img
-                    src="./artwork/allah-muhammad-set.jpg"
-                    alt            <h3>Allah &amp; Muhammad Set</h3>
-                    <p class="price">CAD $300</p>
-                    <p class="status">Available</p>
-                </div>
-            </article>
+            mariumhammad@hotmail.com?subject=Purchase Inquiry - The Bismillah Medallion
+                Inquire About This Piece
+            </a>
+        </article>
 
-            <article class="collection-item">
-                ./artwork/pearl-coast-geode.jpg
-                <div class="collection-info">
-                    <h3>Pearl Coast Geode</h3>
-                    <p class="price">CAD $399</p>
-                    <p class="status">Available</p>
-                </div>
-            </article>
+        <article class="piece">
+            <div class="piece-frame">
+                artwork/allah-muhammad-set.jpg
+                <span class="price-tag">CAD $300</span>
+            </div>
 
-        </div>
-
-    </main>
-
-    <footer class="site-footer">
-        <p>Original handmade artwork by Marium Hammad in Calgary, Alberta.</p>
-    </footer>
-
-</body>
-</html>
-
+            <div class="piece-caption">
+                <h2
