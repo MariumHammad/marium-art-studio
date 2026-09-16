@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Featured Collection | Marium Hammad Art Studio</title>
+    <title>Featured Collection - Marium Hammad Art Studio</title>
 
     <style>
         * {
@@ -14,7 +14,7 @@
         :root {
             --ink: #1c1815;
             --ivory: #efe8d8;
-            --ivory-dark: #e4dbc4;
+            --ivory-deep: #e4dbc4;
             --gold: #a9822f;
             --line: rgba(28, 24, 21, 0.14);
             --shadow: 0 14px 34px rgba(28, 24, 21, 0.16);
@@ -30,7 +30,7 @@
         .gallery-intro {
             max-width: 900px;
             margin: 0 auto;
-            padding: 90px 24px 48px;
+            padding: 90px 24px 50px;
             text-align: center;
         }
 
@@ -45,7 +45,7 @@
         .gallery-intro h1 {
             margin: 0 0 20px;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(40px, 6vw, 64px);
+            font-size: clamp(42px, 6vw, 66px);
             font-weight: 500;
             line-height: 1.05;
         }
@@ -75,7 +75,7 @@
             position: relative;
             overflow: hidden;
             aspect-ratio: 4 / 5;
-            background: var(--ivory-dark);
+            background: var(--ivory-deep);
             border: 1px solid var(--line);
             box-shadow: var(--shadow);
         }
@@ -101,13 +101,14 @@
             background: rgba(28, 24, 21, 0.88);
             color: #ffffff;
             font-size: 13px;
+            font-weight: 700;
         }
 
         .piece-caption {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            gap: 14px;
+            gap: 12px;
             margin-top: 16px;
             padding-top: 16px;
             border-top: 1px solid var(--line);
@@ -116,7 +117,7 @@
         .piece-caption h2 {
             margin: 0;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 23px;
+            font-size: 22px;
             font-weight: 500;
             line-height: 1.25;
         }
@@ -130,14 +131,14 @@
 
         .medium {
             margin: 7px 0 0;
-            color: rgba(28, 24, 21, 0.58);
+            color: rgba(28, 24, 21, 0.60);
             font-size: 13px;
             line-height: 1.5;
         }
 
         .status {
             display: inline-block;
-            margin-top: 12px;
+            margin-top: 10px;
             color: #596451;
             font-size: 12px;
             font-weight: 700;
@@ -148,12 +149,14 @@
         .inquiry {
             display: inline-block;
             margin-top: 15px;
-            padding: 11px 18px;
+            padding: 12px 18px;
             background: var(--ink);
             color: #ffffff;
             font-size: 13px;
+            font-weight: 700;
             letter-spacing: 0.04em;
             text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
         }
 
         .inquiry:hover {
@@ -181,7 +184,7 @@
 
         @media (max-width: 620px) {
             .gallery-intro {
-                padding: 60px 20px 38px;
+                padding: 58px 20px 38px;
             }
 
             .gallery-grid {
@@ -201,8 +204,8 @@
         <h1>Featured Collection</h1>
 
         <p>
-            Original resin, textured and Islamic-inspired artwork by
-            Marium Hammad. Each piece is handmade and presented for
+            Mixed-media, resin, textured, and Islamic-inspired artwork
+            by Marium Hammad. Each piece is handmade and presented for
             contemporary interior spaces.
         </p>
     </header>
@@ -220,14 +223,15 @@
                 <span class="price">CAD $350</span>
             </div>
 
-            <p class="medium">Islamic-inspired mixed-media artwork</p>
+            <p class="medium">
+                Islamic-inspired mixed-media artwork
+            </p>
+
             <span class="status">Available</span>
+
             <br>
 
-            mariumhammad@hotmail.com?subject=Purchase Inquiry - The Bismillah Medallion
-                Inquire About This Piece
-            </a>
-        </article>
+                    </article>
 
         <article class="piece">
             <div class="piece-frame">
@@ -236,4 +240,48 @@
             </div>
 
             <div class="piece-caption">
-                <h2
+                <h2>Allah &amp; Muhammad Set</h2>
+                <span class="price">CAD $300</span>
+            </div>
+
+            <p class="medium">
+                Islamic-inspired coordinating artwork set
+            </p>
+
+            <span class="status">Available</span>
+
+            <br>
+
+                    </article>
+
+        <article class="piece">
+            <div class="piece-frame">
+                artwork/pearl-coast-geode.jpg
+                <span class="price-tag">CAD $399</span>
+            </div>
+
+            <div class="piece-caption">
+                <h2>Pearl Coast Geode</h2>
+                <span class="price">CAD $399</span>
+            </div>
+
+            <p class="medium">
+                Resin geode artwork
+            </p>
+
+            <span class="status">Available</span>
+
+            <br>
+
+                    </article>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>
+            Marium Hammad Art Studio | Calgary, Alberta, Canada
+        </p>
+    </footer>
+
+</body>
+</html>
