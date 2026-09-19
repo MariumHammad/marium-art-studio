@@ -1,332 +1,643 @@
-/* =====================================================================
-   MARIUM HAMMAD ART STUDIO - ARTWORK DATA
-   ---------------------------------------------------------------------
-   This is the ONLY file you need to edit to update the website.
-   index.html reads everything below and builds the site automatically.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
-   TO ADD A NEW ARTWORK
-   1. Upload the photo to the "images" folder in GitHub (lowercase name,
-      no spaces, e.g. emerald-geode-flow.jpg).
-   2. Copy one whole { ... }, block from the list below, paste it at the
-      end of the list (before the closing ]), and change the details.
-   3. Give it a new id (ART-039, ART-040 ...) and set published: true.
-   4. Commit the change. The site updates in about a minute.
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-   RULES
-   - Keep every value in "double quotes" and every line ending in a comma.
-   - Leave a value empty ("") if you do not have it yet. Empty fields are
-     simply not shown on the website (nothing says "unknown").
-   - Only pieces with published: true appear on the website.
-   - price is a number with no $ sign or comma (550, not "$550").
-   - status must be one of:
-       Available, Reserved, Sold, Commission Example,
-       Personal Collection, Not for Sale
-   - Each artwork gets its own shareable link:
-       https://mariumhammad.github.io/marium-art-studio/#ART-001
-     Use this link in the "Artwork Page / Purchase Link" column of your
-     Excel catalogue.
-   ===================================================================== */
+    <meta
+        name="description"
+        content="Original resin geode, Islamic-inspired, textured and mixed-media artwork by Marium Hammad in Calgary, Alberta."
+    >
 
-window.SITE = {
-  name: "Marium Hammad Art Studio",
-  email: "mariumhammad@hotmail.com",
+    <title>Marium Hammad Art Studio</title>
 
-  // Optional: a photo for the top of the page, e.g. "images/hero.jpg".
-  // Leave "" to show the built-in geode illustration.
-  heroImage: "",
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-  // Resume file uploaded to the main folder of the repository.
-  // Set to "" to hide the resume button (see the README before uploading:
-  // the resume PDF contains your phone number).
-  resumeFile: "Marium_Hammad_Artist_Resume.pdf",
+        html {
+            scroll-behavior: smooth;
+        }
 
-  // Leave a link as "" to hide its button.
-  social: {
-    youtube: "https://www.youtube.com/@mariumhammad8000",
-    instagram: "https://www.instagram.com/aptitude_skillsart1/",
-    facebook: "https://www.facebook.com/profile.php?id=61593280235090"
-  }
-};
+        :root {
+            --ink: #1f1a17;
+            --brown: #574338;
+            --gold: #a27c31;
+            --ivory: #f1ebde;
+            --cream: #faf8f3;
+            --white: #ffffff;
+            --green: #596552;
+            --line: rgba(31, 26, 23, 0.15);
+            --shadow: 0 14px 34px rgba(31, 26, 23, 0.14);
+            --max-width: 1240px;
+        }
 
-window.ARTWORKS = [
+        body {
+            margin: 0;
+            background: var(--ivory);
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-  /* ---------------------------------------------------------------
-     PUBLISHED ARTWORKS (visible on the website)
-     Title, category, price and description come from your catalogue.
-     Dimensions and materials are still empty because the catalogue
-     says they are unconfirmed. Fill them in when you have measured.
-     --------------------------------------------------------------- */
+        img {
+            display: block;
+            max-width: 100%;
+        }
 
-  {
-    id: "ART-001",
-    published: true,
-    order: 1,
-    title: "Bismillah: A Timeless Expression of Faith",
-    category: "Islamic-Inspired Mixed Media",
-    group: "Islamic-inspired",          // used only for the filter buttons
-    price: 550,
-    priceNote: "",                      // e.g. "each" or "set of 2"
-    status: "Available",
-    dimensions: "",                     // e.g. '24 x 36 in'
-    materials: "",                      // e.g. 'Acrylic, gold leaf, resin'
-    description: "Original mixed-media artwork featuring hand-painted Islamic calligraphy and a richly textured gold background.",
-    image: "images/bismillah-expression-of-faith.jpg",
-    moreImages: [],                     // extra photos: ["images/bismillah-detail.jpg"]
-    youtube: "https://youtube.com/shorts/FKMP-rz1Q48",
-    facebook: "",
-    instagram: ""
-  },
+        a {
+            color: inherit;
+        }
 
-  {
-    id: "ART-002",
-    published: true,
-    order: 2,
-    title: "Handcrafted Surah Yaseen Artwork",
-    category: "Islamic-Inspired Art",
-    group: "Islamic-inspired",
-    price: 450,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "Handcrafted Surah Yaseen artwork presented as decorative Quranic wall art.",
-    image: "images/surah-yaseen-artwork.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/EujbBcpa5IA",
-    facebook: "",
-    instagram: ""
-  },
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 248, 243, 0.96);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(12px);
+        }
 
-  {
-    id: "ART-004",
-    published: true,
-    order: 4,
-    title: "Emerald Geode Flow",
-    category: "Resin Geode Art",
-    group: "Resin geode",
-    price: 500,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "Handcrafted resin artwork inspired by natural geodes and flowing mineral formations.",
-    image: "images/emerald-geode-flow.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/oD2h0m9IcW8",
-    facebook: "",
-    instagram: ""
-  },
+        .navigation {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: min(var(--max-width), calc(100% - 40px));
+            min-height: 72px;
+            margin: 0 auto;
+            gap: 24px;
+        }
 
-  {
-    id: "ART-006",
-    published: true,
-    order: 6,
-    title: "Blossom in Motion",
-    category: "Textured Mixed Media",
-    group: "Textured and floral",
-    price: 250,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "Textured artwork featuring vibrant blue, floral details, gold leaf, pearls, glitter, and handcrafted surface elements.",
-    image: "images/blossom-in-motion.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/ICwu9-ACea8",
-    facebook: "",
-    instagram: ""
-  },
+        .brand {
+            color: var(--brown);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 21px;
+            font-weight: 600;
+            text-decoration: none;
+        }
 
-  {
-    id: "ART-008",
-    published: true,
-    order: 8,
-    title: "Allah and Muhammad Name Art Set",
-    category: "Islamic-Inspired Art",
-    group: "Islamic-inspired",
-    price: 150,
-    priceNote: "each",                  // CONFIRM: is CAD $150 per piece, or the price of the pair?
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "Handcrafted coordinating pieces featuring the names of Allah and Muhammad.",
-    image: "images/allah-muhammad-set.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/o2nc7UPXMnk",
-    facebook: "",
-    instagram: ""
-  },
+        .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 22px;
+        }
 
-  /* ---------------------------------------------------------------
-     DRAFTS (hidden until you complete them)
-     These are in your catalogue but still have placeholder titles or
-     missing details. To publish one: replace the title, category,
-     group and description, add its photo, then change
-     published: false to published: true.
-     --------------------------------------------------------------- */
+        .nav-links a {
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+        }
 
-  {
-    id: "ART-003",
-    published: false,
-    order: 3,
-    title: "",
-    category: "",
-    group: "",
-    price: 550,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/art-003.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/pKZX7ZNxGiU",
-    facebook: "",
-    instagram: ""
-  },
+        .nav-links a:hover {
+            color: var(--gold);
+        }
 
-  {
-    id: "ART-005",
-    published: false,
-    order: 5,
-    title: "",
-    category: "",
-    group: "",
-    price: 150,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/art-005.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/6bXi8YjBkSU",
-    facebook: "",
-    instagram: ""
-  },
+        .hero {
+            padding: 92px 24px 64px;
+            text-align: center;
+        }
 
-  {
-    id: "ART-007",
-    published: false,
-    order: 7,
-    title: "",
-    category: "",
-    group: "",
-    price: 250,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/art-007.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/HJsp5A56uQE",
-    facebook: "",
-    instagram: ""
-  },
+        .hero-kicker {
+            margin-bottom: 18px;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
 
-  {
-    id: "ART-009",
-    published: false,
-    order: 9,
-    title: "",                          // catalogue working title: textured floral artwork
-    category: "Textured Floral Art",
-    group: "Textured and floral",
-    price: 125,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/art-009.jpg",
-    moreImages: [],
-    youtube: "https://youtube.com/shorts/ZOGPhF7XRtk",
-    facebook: "",
-    instagram: ""
-  },
+        .hero h1 {
+            max-width: 920px;
+            margin: 0 auto 22px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(44px, 7vw, 76px);
+            font-weight: 500;
+            line-height: 1.04;
+        }
 
-  {
-    id: "ART-010",
-    published: false,
-    order: 10,
-    title: "",
-    category: "",
-    group: "",
-    price: 550,                         // CONFIRM: catalogue notes this price was matched by order only
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/art-010.jpg",
-    moreImages: [],
-    youtube: "",
-    facebook: "https://www.facebook.com/share/r/1Eat8D2iwb/",
-    instagram: ""
-  },
+        .hero p {
+            max-width: 690px;
+            margin: 0 auto;
+            color: rgba(31, 26, 23, 0.72);
+            font-size: 17px;
+            line-height: 1.75;
+        }
 
-  {
-    id: "ART-011",
-    published: false,
-    order: 11,
-    title: "",
-    category: "",
-    group: "",
-    price: 250,                         // SUGGESTED starting price, not confirmed. Adjust once size and materials are known
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/art-011.jpg",
-    moreImages: [],
-    youtube: "",
-    facebook: "https://www.facebook.com/share/p/1HtHxUvGtn/",
-    instagram: ""
-  },
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 32px;
+        }
 
-  {
-    id: "ART-012",
-    published: false,
-    order: 12,
-    title: "",
-    category: "",
-    group: "",
-    price: 250,                         // SUGGESTED starting price, not confirmed. Adjust once size and materials are known
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/art-012.jpg",
-    moreImages: [],
-    youtube: "",
-    facebook: "https://www.facebook.com/share/v/1cVVoX2sAu/",
-    instagram: ""
-  }
+        .button {
+            display: inline-block;
+            padding: 13px 20px;
+            border: 1px solid var(--ink);
+            background: var(--ink);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
 
-  /* ---------------------------------------------------------------
-     BLANK TEMPLATE - copy this block for each new artwork.
-     Put a comma after the } above it.
+        .button:hover {
+            border-color: var(--gold);
+            background: var(--gold);
+            color: var(--ink);
+        }
 
-  ,{
-    id: "ART-039",
-    published: true,
-    order: 39,
-    title: "",
-    category: "",
-    group: "",
-    price: 0,
-    priceNote: "",
-    status: "Available",
-    dimensions: "",
-    materials: "",
-    description: "",
-    image: "images/your-file-name.jpg",
-    moreImages: [],
-    youtube: "",
-    facebook: "",
-    instagram: ""
-  }
-     --------------------------------------------------------------- */
-];
+        .button-light {
+            background: transparent;
+            color: var(--ink);
+        }
+
+        .collection-section {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
+            padding: 70px 0 82px;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 25px;
+            margin-bottom: 34px;
+        }
+
+        .section-heading-text {
+            max-width: 720px;
+        }
+
+        .section-label {
+            margin-bottom: 10px;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .section-heading p {
+            margin: 12px 0 0;
+            color: rgba(31, 26, 23, 0.65);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 34px 28px;
+        }
+
+        .art-card {
+            min-width: 0;
+        }
+
+        .art-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: #e4dccb;
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .art-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.45s ease;
+        }
+
+        .art-card:hover .art-image img {
+            transform: scale(1.035);
+        }
+
+        .price-badge {
+            position: absolute;
+            right: 12px;
+            bottom: 12px;
+            padding: 8px 12px;
+            background: rgba(31, 26, 23, 0.88);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .art-information {
+            padding-top: 16px;
+        }
+
+        .art-title-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 14px;
+            padding-top: 15px;
+            border-top: 1px solid var(--line);
+        }
+
+        .art-title-row h3 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1.25;
+        }
+
+        .art-price {
+            flex-shrink: 0;
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .art-medium {
+            margin: 8px 0 0;
+            color: rgba(31, 26, 23, 0.62);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .art-status {
+            display: inline-block;
+            margin-top: 9px;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .inquire-button {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 10px 15px;
+            background: var(--ink);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+
+        .inquire-button:hover {
+            background: var(--gold);
+            color: var(--ink);
+        }
+
+        .about-section {
+            background: var(--cream);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 0.75fr 1.25fr;
+            gap: 70px;
+            width: min(1040px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 85px 0;
+        }
+
+        .about-content h2 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(34px, 5vw, 52px);
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .about-copy p {
+            margin: 0 0 18px;
+            color: rgba(31, 26, 23, 0.76);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .contact-section {
+            padding: 82px 24px;
+            background: var(--brown);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin: 0 0 15px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(36px, 5vw, 54px);
+            font-weight: 500;
+        }
+
+        .contact-section p {
+            max-width: 650px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.78);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            padding: 12px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .contact-links a:hover {
+            background: var(--white);
+            color: var(--brown);
+        }
+
+        .site-footer {
+            padding: 26px 20px;
+            background: var(--ink);
+            color: rgba(255, 255, 255, 0.72);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 920px) {
+            .navigation {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 18px 0;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 26px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .nav-links {
+                gap: 14px;
+            }
+
+            .hero {
+                padding: 65px 18px 48px;
+            }
+
+            .collection-section {
+                width: min(100% - 28px, var(--max-width));
+                padding: 52px 0 62px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .art-image {
+                aspect-ratio: 4 / 5;
+            }
+
+            .about-content {
+                width: min(100% - 32px, 1040px);
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="navigation">
+            #home
+                Marium Hammad Art Studio
+            </a>
+
+            <div class="nav-links">
+                #featuredFeatured</a>
+                #islamicIslamic Art</a>
+                #resinResin Geode</a>
+                #mixedMixed Media</a>
+                #aboutAbout</a>
+                #contactContact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-kicker">
+            ORIGINAL ARTWORK • HANDCRAFTED IN CALGARY
+        </div>
+
+        <h1>
+            Art created through colour, texture and decorative detail
+        </h1>
+
+        <p>
+            Discover original Islamic-inspired, resin geode, textured
+            and mixed-media artwork created by Marium Hammad for
+            contemporary homes and creative interior spaces.
+        </p>
+
+        <div class="hero-actions">
+            #featured
+                View Collection
+            </a>
+
+            mariumhammad@hotmail.com?subject=Artwork Inquiry
+                Contact the Artist
+            </a>
+        </div>
+    </section>
+
+    <section class="collection-section" id="featured">
+        <div class="section-heading">
+            <div class="section-heading-text">
+                <div class="section-label">Selected Work</div>
+
+                <h2>Featured Collection</h2>
+
+                <p>
+                    A selection of original handmade artwork currently
+                    highlighted by Marium Hammad Art Studio.
+                </p>
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+
+            <article class="art-card">
+                <div class="art-image">
+                    ./artwork/the-bismillah-medallion.jpg
+                    <span class="price-badge">CAD $350</span>
+                </div>
+
+                <div class="art-information">
+                    <div class="art-title-row">
+                        <h3>The Bismillah Medallion</h3>
+                        <span class="art-price">CAD $350</span>
+                    </div>
+
+                    <p class="art-medium">
+                        Islamic-inspired mixed-media artwork
+                    </p>
+
+                    <span class="art-status">Available</span>
+
+                    <br>
+
+                    mariumhammad@hotmail.com?subject=Purchase Inquiry - The Bismillah Medallion
+                        Purchase Inquiry
+                    </a>
+                </div>
+            </article>
+
+            <article class="art-card">
+                <div class="art-image">
+                    ./artwork/allah-muhammad-set.jpg
+                    <span class="price-badge">CAD $300</span>
+                </div>
+
+                <div class="art-information">
+                    <div class="art-title-row">
+                        <h3>Allah &amp; Muhammad Set</h3>
+                        <span class="art-price">CAD $300</span>
+                    </div>
+
+                    <p class="art-medium">
+                        Islamic-inspired coordinating artwork set
+                    </p>
+
+                    <span class="art-status">Available</span>
+
+                    <br>
+
+                    mariumhammad@hotmail.com?subject=Purchase Inquiry - Allah and Muhammad Set
+                        Purchase Inquiry
+                    </a>
+                </div>
+            </article>
+
+            <article class="art-card">
+                <div class="art-image">
+                    ./artwork/pearl-coast-geode.jpg
+                    <span class="price-badge">CAD $399</span>
+                </div>
+
+                <div class="art-information">
+                    <div class="art-title-row">
+                        <h3>Pearl Coast Geode</h3>
+                        <span class="art-price">CAD $399</span>
+                    </div>
+
+                    <p class="art-medium">
+                        Resin geode artwork
+                    </p>
+
+                    <span class="art-status">Available</span>
+
+                    <br>
+
+                    mariumhammad@hotmail.com?subject=Purchase Inquiry - Pearl Coast Geode
+                        Purchase Inquiry
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="collection-section" id="islamic">
+        <div class="section-heading">
+            <div class="section-heading-text">
+                <div class="section-label">Faith &amp; Decorative Detail</div>
+
+                <h2>Islamic Art Collection</h2>
+
+                <p>
+                    Original Islamic-inspired work combining
+                    calligraphy, texture, gold tones and decorative
+                    mixed-media techniques.
+                </p>
+            </div>
+        </div>
+
+        <div class="gallery-grid">
+
+            <article class="art-card">
+                <div class="art-image">
+                    ./islamic-art/the-bismillah-medallion.jpg
+                    <span class="price-badge">CAD $350</span>
+                </div>
+
+                <div class="art-information">
+                    <div class="art-title-row">
+                        <h3>The Bismillah Medallion</h3>
+                        <span class="art-price">CAD $350</span>
+                    </div>
+
+                    <p class="art-medium">
+                        Islamic-inspired mixed-media artwork
+                    </p>
+
+                    <span class="art-status">Available</span>
+
+                    <br>
+
+                    mariumhammad@hotmail.com?subject=Purchase Inquiry - The Bismillah Medallion
+                        Purchase Inquiry
+                    </a>
+                </div>
+            </article>
+
+            <article class="art-card">
+                <div class="art-image">
+                    ./islamic-art/allah-muhammad-set.jpg
+                    <span class="price-badge">CAD $300</span>
+                </div>
+
