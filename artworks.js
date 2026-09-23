@@ -40,7 +40,7 @@ window.SITE = {
   // Resume PDF in the main folder of the repository. It is OFF by default
   // because the PDF shows your phone number. To turn it on, upload the PDF
   // and set this to "Marium_Hammad_Artist_Resume.pdf".
-  resumeFile: "",
+  resumeFile: "resume/Marium_Hammad_Artist_Resume.pdf",
 
   // Leave a link as "" to hide its button.
   social: {
