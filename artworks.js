@@ -88,7 +88,7 @@ window.ARTWORKS = [
     title: "The Ornate Majesty",
     category: "Islamic-Inspired Mixed Media",
     group: "Islamic-inspired",
-    price: 550,                        // SUGGESTED price, not confirmed
+    price: 280,                        // set by you
     priceNote: "",
     status: "Available",
     dimensions: "",
@@ -128,7 +128,7 @@ window.ARTWORKS = [
     title: "The Cherry Blossom Dancer",
     category: "Multi-Media Tapestry",
     group: "Textured and floral",
-    price: 450,                        // SUGGESTED price, not confirmed
+    price: 250,                        // set by you
     priceNote: "",
     status: "Available",
     dimensions: "",
@@ -310,7 +310,7 @@ window.ARTWORKS = [
     group: "Textured and floral",
     price: 250,                        // from your catalogue
     priceNote: "",
-    status: "Available",
+    status: "Sold",
     dimensions: "",
     materials: "",
     description: "Textured artwork of slender copper-toned trees with golden leaves, pink blossoms, glitter and jewelled accents, and a jewelled archway at the centre.",
@@ -328,7 +328,7 @@ window.ARTWORKS = [
     title: "Sapphire Abyss",
     category: "Geode-Inspired Sculpture",
     group: "Resin geode",
-    price: 250,                        // SUGGESTED price, not confirmed
+    price: 1250,                       // set by you
     priceNote: "",
     status: "Available",
     dimensions: "",
@@ -408,7 +408,7 @@ window.ARTWORKS = [
     title: "Golden Leaf Set",
     category: "Textured Relief Art",
     group: "Gold and copper",
-    price: 450,                        // SUGGESTED price, not confirmed
+    price: 220,                        // set by you
     priceNote: "for the set of 2",
     status: "Available",
     dimensions: "",
@@ -428,7 +428,7 @@ window.ARTWORKS = [
     title: "Midnight Solitude",
     category: "Textured Abstract Art",
     group: "Gold and copper",
-    price: 200,                        // SUGGESTED price, not confirmed
+    price: 350,                        // set by you
     priceNote: "",
     status: "Available",
     dimensions: "",
