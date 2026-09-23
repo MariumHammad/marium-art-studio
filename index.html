@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -179,6 +180,7 @@
     .about { background: var(--panel); padding: 84px 0 92px; }
     .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start; }
     .about-side { position: sticky; top: 100px; }
+    .about-photo { width: 100%; max-width: 220px; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--line); margin-bottom: 20px; }
     .about-side h2 { font-size: clamp(2.1rem, 4vw, 3.1rem); line-height: 1.08; }
     .about-role { margin-top: 14px; color: var(--muted); }
     .about-side .btn { margin-top: 18px; }
@@ -423,6 +425,7 @@
     <section class="about" id="about" aria-labelledby="about-title">
       <div class="wrap about-grid">
         <div class="about-side">
+          <img id="profilePhoto" class="about-photo" alt="Marium Hammad" hidden>
           <h2 id="about-title">About Marium Hammad</h2>
           <p class="about-role">Mixed media and resin artist in Calgary, Alberta</p>
           <a class="btn btn-secondary" id="resumeBtn" href="Marium_Hammad_Artist_Resume.pdf" hidden target="_blank" rel="noopener">Download resume (PDF)</a>
@@ -823,6 +826,13 @@
       var original = heroBox.innerHTML;
       hero.addEventListener("error", function () { heroBox.innerHTML = original; });
       heroBox.replaceChildren(hero);
+    }
+
+    if (clean(SITE.profileImage)) {
+      var pp = document.getElementById("profilePhoto");
+      pp.addEventListener("error", function () { pp.hidden = true; });
+      pp.src = SITE.profileImage;
+      pp.hidden = false;
     }
 
     document.getElementById("year").textContent = new Date().getFullYear();
