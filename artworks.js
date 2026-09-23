@@ -37,10 +37,13 @@ window.SITE = {
   // Photo shown at the top of the page. Leave "" for the built-in drawing.
   heroImage: "images/the-bismillah-medallion.jpg",
 
+  // Photo of the artist, shown in the About section. Leave "" to hide it.
+  profileImage: "images/marium-hammad.jpg",
+
   // Resume PDF in the main folder of the repository. It is OFF by default
   // because the PDF shows your phone number. To turn it on, upload the PDF
   // and set this to "Marium_Hammad_Artist_Resume.pdf".
-  resumeFile: "resume/Marium_Hammad_Artist_Resume.pdf",
+  resumeFile: "",
 
   // Leave a link as "" to hide its button.
   social: {
